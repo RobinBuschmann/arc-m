@@ -1,0 +1,11 @@
+# General
+.DS_Store
+
+# IDE
+.idea
+
+# Build
+dist
+
+# Libs
+node_modules
