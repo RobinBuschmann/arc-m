@@ -2,7 +2,7 @@
   "name": "arc-m",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/arc-m.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "webpack"

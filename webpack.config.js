@@ -14,7 +14,7 @@ module.exports = {
         'prop-types',
     ],
     output: {
-        filename: packageName + '.js',
+        filename: 'index.js',
         path: resolve(__dirname, 'dist'),
         library: packageName,
         libraryTarget: 'umd'
