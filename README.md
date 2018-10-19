@@ -27,57 +27,60 @@ HelloWorld.propTypes = {
 2. Register the react component and just use it
 
     a. via reference
-    ```typescript
-    import {Component} from '@angular/core';
-    import {registerReactComponents} from 'arc-m';
-    import {HelloWorld} from './hello-world';
-    
-    const [helloWorld] = registerReactComponents([HelloWorld]);
+```typescript
+import {Component} from '@angular/core';
+import {registerReactComponents} from 'arc-m';
+import {HelloWorld} from './hello-world';
 
-    @Component({
-       selector: 'my-ng-component',
-       template: `
-           <div>
-               ${helloWorld(`<ARC [name]="name" (onClick)="handleOnClick"></ARC>`)}
-           </div>
-       `,
-    })
-    export class MyNgComponent {
-        name = 'you';
-        
-        handleOnClick() {
-            alert('👍');
-        }
+const [helloWorld] = registerReactComponents([HelloWorld]);
+
+@Component({
+   selector: 'my-ng-component',
+   template: `
+       <div>
+           ${helloWorld(`<ARC [name]="name" (onClick)="handleOnClick"></ARC>`)}
+       </div>
+   `,
+})
+export class MyNgComponent {
+    name = 'you';
+    
+    handleOnClick() {
+        alert('👍');
     }
-    ```
+}
+```
+
 `ARC` is just a placeholder for the actual component selector of `HelloWorld` and can be changed.
 The selector of the angular component which wraps the react component is created dynamically.
 
     b. or with a custom selector
 
-    ```typescript
-    import {Component} from '@angular/core';
-    import {registerReactComponents} from 'arc-m';
-    import {HelloWorld} from './hello-world';
+```typescript
+import {Component} from '@angular/core';
+import {registerReactComponents} from 'arc-m';
+import {HelloWorld} from './hello-world';
+
+registerReactComponents([
+    [HelloWorld, 'hello-world']
+]);
+
+@Component({
+  selector: 'my-ng-component',
+  template: `
+    <div>
+        <hello-world [name]="name" (onClick)="handleOnClick"></hello-world>
+    </div>
+  `,
+})
+export class MyNgComponent {
+    name = 'you';
     
-    registerReactComponents([[HelloWorld, 'hello-world']]);
-    
-    @Component({
-      selector: 'my-ng-component',
-      template: `
-        <div>
-            <hello-world [name]="name" (onClick)="handleOnClick"></hello-world>
-        </div>
-      `,
-    })
-    export class MyNgComponent {
-        name = 'you';
-        
-        handleOnClick() {
-            alert('👍');
-        }
+    handleOnClick() {
+        alert('👍');
     }
-    ```
+}
+```
 
 3. Import arc module 
 ```typescript
