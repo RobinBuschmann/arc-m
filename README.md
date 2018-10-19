@@ -2,7 +2,7 @@
 
 (arc-m stands for Angular React Component Module)
 
-> Angular module for wrapping react components in order to use those react components directly in angular components
+> Angular module for wrapping react components in order to use them directly in angular components.
 
 ## Installation
 ```bash
