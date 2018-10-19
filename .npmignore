@@ -1,0 +1,15 @@
+# General
+.DS_Store
+
+# IDE
+.idea
+
+# Source
+src
+test
+
+# Config
+webpack.config.js
+
+# Libs
+node_modules
