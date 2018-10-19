@@ -1,11 +1,12 @@
-const {resolve} = require('path');
+const {readdirSync, statSync, unlinkSync} = require("fs");
+const {resolve, join} = require('path');
 
 const packageName = require('./package.json').name;
 
 module.exports = {
     entry: './src/index.ts',
     resolve: {
-        extensions: ['.ts']
+        extensions: ['.ts'],
     },
     externals: [
         '@angular/core',
@@ -17,11 +18,26 @@ module.exports = {
         filename: 'index.js',
         path: resolve(__dirname, 'dist'),
         library: packageName,
-        libraryTarget: 'umd'
+        libraryTarget: 'umd',
     },
     module: {
         rules: [
             {test: /\.ts$/, use: 'ts-loader'},
         ],
     },
+    plugins: [
+        {
+            apply: compiler =>
+                compiler.hooks.compilation.tap('clean dist', compilation => {
+                    const path = compilation.options.output.path;
+                    readdirSync(path)
+                        .forEach(name => {
+                            const fullPath = join(path, name);
+                            if (!statSync(fullPath).isDirectory()) {
+                                unlinkSync(join(fullPath));
+                            }
+                        })
+                })
+        },
+    ]
 };

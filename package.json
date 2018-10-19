@@ -2,13 +2,26 @@
   "name": "arc-m",
   "version": "1.0.0",
   "description": "",
+  "author": "",
+  "license": "ISC",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "test": "jest"
   },
-  "author": "",
-  "license": "ISC",
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupTestFrameworkScriptFile": "<rootDir>/test/jest-setup.ts",
+    "roots": [
+      "test"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "test/tsconfig.json"
+      }
+    }
+  },
   "peerDependencies": {
     "@angular/core": "*",
     "@types/react": "*",
@@ -18,15 +31,23 @@
     "react-dom": "*"
   },
   "devDependencies": {
+    "@angular/common": "^6.1.10",
+    "@angular/compiler": "^6.1.10",
     "@angular/core": "^6.1.10",
+    "@angular/platform-browser": "^6.1.10",
+    "@angular/platform-browser-dynamic": "^6.1.10",
     "@types/react": "^16.4.17",
     "@types/react-dom": "^16.0.9",
+    "jest": "^23.6.0",
+    "jest-preset-angular": "^6.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "rxjs": "^6.3.3",
     "ts-loader": "^5.2.2",
     "typescript": "^3.1.3",
     "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "zone.js": "^0.8.26"
   }
 }
