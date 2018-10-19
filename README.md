@@ -54,6 +54,7 @@ HelloWorld.propTypes = {
 The selector of the angular component which wraps the react component is created dynamically.
 
     b. or with a custom selector
+
     ```typescript
     import {Component} from '@angular/core';
     import {registerReactComponents} from 'arc-m';
