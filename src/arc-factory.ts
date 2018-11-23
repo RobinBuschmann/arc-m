@@ -7,6 +7,7 @@ export const createComponent = (ReactComponent, selector): Type<any> => {
   @Component({selector, template: `<!--ReactComponent ${selector}-->`})
   class AngularReactComponent implements OnInit, OnDestroy {
     props = {};
+    timeoutId;
     outputKeys: string[];
     [args: string]: any;
 
@@ -50,7 +51,10 @@ export const createComponent = (ReactComponent, selector): Type<any> => {
         Object.defineProperty(AngularReactComponent.prototype, key, {
           set(value) {
             this.props[key] = value;
-            this.update();
+            this.timeoutId = setTimeout(() => {
+                clearTimeout(this.timeoutId);
+                this.update();
+            });
           },
         })
       }
