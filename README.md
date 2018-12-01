@@ -9,6 +9,9 @@
 npm i arc-m
 ```
 
+## Limitation
+⚠️ Doesn't work with AOT-compliler for now.
+
 ## Usage
 1. Write a react component. Use `prop-types` to describe the component props.
 ```typescript jsx
