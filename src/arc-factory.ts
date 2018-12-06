@@ -51,8 +51,8 @@ export const createComponent = (ReactComponent, selector): Type<any> => {
         Object.defineProperty(AngularReactComponent.prototype, key, {
           set(value) {
             this.props[key] = value;
+            clearTimeout(this.timeoutId);
             this.timeoutId = setTimeout(() => {
-                clearTimeout(this.timeoutId);
                 this.update();
             });
           },
